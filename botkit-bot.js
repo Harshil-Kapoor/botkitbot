@@ -18,9 +18,9 @@ var controller = botkit.facebookbot({
 
 var bot = controller.spawn()
 
-controller.setupWebServer(port, function (err, webserver) {
+controller.setupWebserver(port, function (err, webserver) {
     if(err) return console.log(err)
-    controller.createWebHookEndpoints(webserver, bot, function () {
+    controller.createWebhookEndpoints(webserver, bot, function () {
         console.log('Ready Player 1')
     })
 })
