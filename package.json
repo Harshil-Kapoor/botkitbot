@@ -1,5 +1,5 @@
 {
-  "name": "Conversation Bot",
+  "name": "Conversation-Bot",
   "version": "0.0.1",
   "scripts": {
     "start": "node botkit-bot"
