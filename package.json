@@ -1,8 +1,8 @@
 {
-  "name": "application-name",
+  "name": "Conversation Bot",
   "version": "0.0.1",
   "scripts": {
-    "start": "node convo-bot"
+    "start": "node conv-bot"
   },
   "dependencies": {
     "botkit": "latest"
