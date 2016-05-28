@@ -26,6 +26,12 @@ controller.setupWebserver(port, function (err, webserver) {
     });
 });
 
+// this is triggered when a user clicks the send-to-messenger plugin
+controller.on('facebook_optin', function(bot, message) {
+    bot.reply(message, 'Welcome to My Chat Bot!');
+});
+
+// user said hello
 controller.hears(['hello', 'hi'], 'message_received', function (bot, message) {
     bot.reply(message, 'Hello!');
     bot.reply(message, 'I want to  show you something');
