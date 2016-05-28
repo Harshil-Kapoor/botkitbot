@@ -40,51 +40,57 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
     })
 });
 
+
+
+// attachment: {
+//     type: 'template',
+//     payload: {
+//         template_type: 'generic',
+//         text: 'What flavor of pizza do you want?',
+//         elements: [
+//             {
+//                 title: 'Double Cheese',
+//                 imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
+//             },
+//             {
+//                 title: 'Gourmet',
+//                 imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg'
+//             },
+//             {
+//                 title: 'Mexican Green Wave',
+//                 imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg'
+//             },
+//             {
+//                 title: 'Peppy Paneer',
+//                 imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg'
+//             }
+//         ]
+//     }
+// }
+
+
+
 askFlavor = function (response, convo) {
-    convo.ask({
-        attachment: {
-            type: 'template',
-            payload: {
-                template_type: 'generic',
-                text: 'What flavor of pizza do you want?',
-                elements: [
-                    {
-                        title: 'Double Cheese',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
-                    },
-                    {
-                        title: 'Gourmet',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg'
-                    },
-                    {
-                        title: 'Mexican Green Wave',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg'
-                    },
-                    {
-                        title: 'Peppy Paneer',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg'
-                    }
-                ]
-            }
-        }
-    }, function (response, convo) {
+    convo.ask("What flavor do you want" , function (response, convo) {
         convo.say("Awesome");
         askSize(response, convo);
         convo.next();
     });
 };
 
+
+// attachment: {
+//     type: 'template',
+//         payload: {
+//         template_type: 'generic',
+//             text: "What size do you want?",
+//             image_url: 'http://www.godfathers.com/sites/default/files/pie_sizes.gif'
+//     }
+// }
+
+
 askSize = function (response, convo) {
-    convo.ask({
-        attachment: {
-            type: 'template',
-            payload: {
-                template_type: 'generic',
-                text: "What size do you want?",
-                image_url: 'http://www.godfathers.com/sites/default/files/pie_sizes.gif'
-            }
-        }
-    }, function (response, convo) {
+    convo.ask("What size do you want?" , function (response, convo) {
         convo.say("Sure");
         askWhereDeliver(response, convo);
         convo.next();
