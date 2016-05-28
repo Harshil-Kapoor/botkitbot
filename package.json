@@ -2,7 +2,7 @@
   "name": "application-name",
   "version": "0.0.1",
   "scripts": {
-    "start": "node botkit-bot"
+    "start": "node conv-bot"
   },
   "dependencies": {
     "botkit": "latest"
