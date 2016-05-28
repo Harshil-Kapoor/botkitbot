@@ -35,7 +35,7 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
         bot.say("Hey there!");
         bot.say("Welcome to pizzatime");
         bot.say("Let's get you a pizza");
-        askFlavor();
+        askFlavor(response, convo);
         convo.next();
     })
 });
@@ -43,7 +43,7 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
 askFlavor = function (response, convo) {
     convo.ask("What flavor of pizza do you want?", function (response, convo) {
         convo.say("Awesome");
-        askSize();
+        askSize(response, convo);
         convo.next();
     });
 };
@@ -51,7 +51,7 @@ askFlavor = function (response, convo) {
 askSize = function (response, convo) {
     convo.ask("What size do you want?", function (response, convo) {
         convo.say("Sure");
-        askWhereDeliver();
+        askWhereDeliver(response, convo);
         convo.next();
     });
 };
@@ -59,7 +59,7 @@ askSize = function (response, convo) {
 askSize = function (response, convo) {
     convo.ask("What size do you want?", function (response, convo) {
         convo.say("Sure");
-        askWhereDeliver();
+        askWhereDeliver(response, convo);
         convo.next();
     });
 };
