@@ -32,16 +32,42 @@ controller.on('facebook_optin', function (bot, message) {
 
 controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot, message) {
     bot.startConversation(message, function (response, convo) {
-        bot.say("Hey there!");
-        bot.say("Welcome to pizzatime");
-        bot.say("Let's get you a pizza");
+        convo.say("Hey there!");
+        convo.say("Welcome to pizzatime");
+        convo.say("Let's get you a pizza");
         askFlavor(response, convo);
         convo.next();
     })
 });
 
 askFlavor = function (response, convo) {
-    convo.ask("What flavor of pizza do you want?", function (response, convo) {
+    convo.ask({
+        attachment: {
+            type: 'template',
+            payload: {
+                template_type: 'generic',
+                text: 'What flavor of pizza do you want?',
+                elements: [
+                    {
+                        title: 'Double Cheese',
+                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
+                    },
+                    {
+                        title: 'Gourmet',
+                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg'
+                    },
+                    {
+                        title: 'Mexican Green Wave',
+                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg'
+                    },
+                    {
+                        title: 'Peppy Paneer',
+                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg'
+                    }
+                ]
+            }
+        }
+    }, function (response, convo) {
         convo.say("Awesome");
         askSize(response, convo);
         convo.next();
@@ -49,20 +75,29 @@ askFlavor = function (response, convo) {
 };
 
 askSize = function (response, convo) {
-    convo.ask("What size do you want?", function (response, convo) {
+    convo.ask({
+        attachment: {
+            type: 'template',
+            payload: {
+                template_type: 'generic',
+                text: "What size do you want?",
+                image_url: 'http://www.godfathers.com/sites/default/files/pie_sizes.gif'
+            }
+        }
+    }, function (response, convo) {
         convo.say("Sure");
         askWhereDeliver(response, convo);
         convo.next();
     });
 };
 
-askSize = function (response, convo) {
-    convo.ask("What size do you want?", function (response, convo) {
-        convo.say("Sure");
-        askWhereDeliver(response, convo);
-        convo.next();
-    });
-};
+// askSize = function (response, convo) {
+//     convo.ask("What size do you want?", function (response, convo) {
+//         convo.say("Sure");
+//         askWhereDeliver(response, convo);
+//         convo.next();
+//     });
+// };
 
 askWhereDeliver = function (response, convo) {
     convo.ask("So where do you want it delivered?", function (response, convo) {
@@ -71,4 +106,3 @@ askWhereDeliver = function (response, convo) {
         convo.next();
     });
 };
-
