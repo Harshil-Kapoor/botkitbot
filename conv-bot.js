@@ -20,7 +20,7 @@ var bot = controller.spawn();
 
 controller.setupWebserver(port, function (err, webserver) {
     if(err) return console.log(err);
-    controller.setupWebhookEndpoints(webserver, bot, function () {
+    controller.createWebhookEndpoints(webserver, bot, function () {
         console.log("Webhooks successfully set up");
     });
 });
