@@ -47,7 +47,7 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
 // text: 'What flavor of pizza do you want?',
 
 askFlavor = function (response, convo) {
-    // convo.say("What flavor do you want");
+    convo.say("What flavor do you want");
     convo.ask({
         attachment: {
             type: 'template',
@@ -112,12 +112,12 @@ askFlavor = function (response, convo) {
                         buttons: [
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B1'
                             },
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B2'
                             }
                         ]
