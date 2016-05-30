@@ -47,7 +47,7 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
 // text: 'What flavor of pizza do you want?',
 
 askFlavor = function (response, convo) {
-    convo.say("What flavor do you want");
+    // convo.say("What flavor do you want");
     convo.ask({
         attachment: {
             type: 'template',
