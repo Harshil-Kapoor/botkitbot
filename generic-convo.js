@@ -138,19 +138,23 @@ askWhereDeliver = function (response, convo) {
     });
 };
 
-controller.on('facebook_postback', function (convo, message) {
+controller.on('facebook_postback', function (bot, message) {
     switch (message.payload){
         case 'dC' :
-            convo.say("Double Cheese it is...");
+            // convo.say("Double Cheese it is...");
+            bot.reply(message, "Double Cheese it is...");
             break;
         case 'g' :
-            convo.say("Gourmet it is...");
+            // convo.say("Gourmet it is...");
+            bot.reply(message, "Gourmet it is...");
             break;
         case 'mG' :
-            convo.say("Mexican Green Wave it is...");
+            // convo.say("Mexican Green Wave it is...");
+            bot.reply(message, "Mexican Green Wave it is...");
             break;
         case 'pP' :
-            convo.say("Peppy Paneer it is...");
+            // convo.say("Peppy Paneer it is...");
+            bot.reply(message, "Peppy Paneer it is...");
             break;
     }
 });
