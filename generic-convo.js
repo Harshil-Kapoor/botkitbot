@@ -50,7 +50,7 @@ askFlavor = function (response, convo) {
     convo.say("What flavor do you want");
     convo.ask({
         attachment: {
-            type: 'template',
+            type: 'generic',
             payload: {
                 template_type: 'generic',
                 elements: [
