@@ -50,25 +50,25 @@ askFlavor = function (response, convo) {
     convo.say("What flavor do you want");
     convo.ask({
         attachment: {
-            type: 'template',
-            payload: {
-                template_type: 'generic',
-                elements: [
+            'type': 'template',
+            'payload': {
+                'template_type': 'generic',
+                'elements': [
                     {
-                        title: 'Double Cheese',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
+                        'title': 'Double Cheese',
+                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
                     },
                     {
-                        title: 'Gourmet',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg'
+                        'title': 'Gourmet',
+                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg'
                     },
                     {
-                        title: 'Mexican Green Wave',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg'
+                        'title': 'Mexican Green Wave',
+                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg'
                     },
                     {
-                        title: 'Peppy Paneer',
-                        imag_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg'
+                        'title': 'Peppy Paneer',
+                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg'
                     }
                 ]
             }
