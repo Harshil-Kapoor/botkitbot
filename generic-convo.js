@@ -61,12 +61,12 @@ askFlavor = function (response, convo) {
                         buttons: [
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B1'
                             },
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B2'
                             }
                         ]
@@ -78,12 +78,12 @@ askFlavor = function (response, convo) {
                         buttons: [
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B1'
                             },
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B2'
                             }
                         ]
@@ -95,12 +95,12 @@ askFlavor = function (response, convo) {
                         buttons: [
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B1'
                             },
                             {
                                 type: 'web_url',
-                                url: '',
+                                url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
                                 title: 'B2'
                             }
                         ]
