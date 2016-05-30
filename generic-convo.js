@@ -56,79 +56,53 @@ askFlavor = function (response, convo) {
                 elements: [
                     {
                         title: 'Double Cheese',
-                        item_url: 'postback',
                         image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg',
                         subtitle: 'This is a very popular veg. pizza which has a double thick layer of cheese.',
-                        payload: 'dC'
-                        // buttons: [
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B1'
-                        //     },
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B2'
-                        //     }
-                        // ]
+                        buttons: [
+                            {
+                                type: 'postback',
+                                title: 'This one!',
+                                payload: 'dC'
+                            }
+                        ]
                     },
                     {
                         title: 'Gourmet',
-                        item_url: 'postback',
                         image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg',
                         subtitle: 'This is a unique flavour of vegetarian pizza where the pizza where the spicy vegetarian delight is topped with extremely appealing golden corns, loaded with extra cheese.',
-                        payload: 'g'
-                        // buttons: [
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B1'
-                        //     },
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B2'
-                        //     }
-                        // ]
+                        buttons: [
+                            {
+                                type: 'postback',
+                                title: 'This one!',
+                                payload: 'g'
+                            }
+                        ]
                     },
                     {
                         title: 'Mexican Green Wave',
-                        item_url: 'postback',
                         image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg',
                         subtitle: 'This is another unique recipe of American pizza which mane is influenced by the Mexican Waves.',
-                        payload: 'mG'
-                        // buttons: [
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B1'
-                        //     },
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B2'
-                        //     }
-                        // ]
+                        payload: 'mG',
+                        buttons: [
+                            {
+                                type: 'postback',
+                                title: 'This one!',
+                                payload: 'mG'
+                            }
+                        ]
                     },
                     {
                         title: 'Peppy Paneer',
-                        item_url: 'postback',
                         image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg',
                         subtitle: 'The Paneer used in this pizza are barbequed and then few pieces of Paneer is sprinkled over the pizza along with crispy capsicum slices and spicy red pepper.',
-                        payload: 'pP'
-                        // buttons: [
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B1'
-                        //     },
-                        //     {
-                        //         type: 'web_url',
-                        //         url: 'http://top-10-list.org/2011/05/20/top-10-pizza-flavours/?utm_source=wordtwit&utm_medium=social&utm_campaign=wordtwit',
-                        //         title: 'B2'
-                        //     }
-                        // ]
+                        payload: 'pP',
+                        buttons: [
+                            {
+                                type: 'postback',
+                                title: 'This one!',
+                                payload: 'pP'
+                            }
+                        ]
                     }
                 ]
             }
