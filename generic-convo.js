@@ -50,25 +50,77 @@ askFlavor = function (response, convo) {
     convo.say("What flavor do you want");
     convo.ask({
         attachment: {
-            'type': 'template',
-            'payload': {
-                'template_type': 'generic',
-                'elements': [
+            type: 'template',
+            payload: {
+                template_type: 'generic',
+                elements: [
                     {
-                        'title': 'Double Cheese',
-                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
+                        title: 'Double Cheese',
+                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg',
+                        subtitle: 'This is a very popular veg. pizza which has a double thick layer of cheese.',
+                        buttons: [
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B1'
+                            },
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B2'
+                            }
+                        ]
                     },
                     {
-                        'title': 'Gourmet',
-                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg'
+                        title: 'Gourmet',
+                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg',
+                        subtitle: 'This is a unique flavour of vegetarian pizza where the pizza where the spicy vegetarian delight is topped with extremely appealing golden corns, loaded with extra cheese.',
+                        buttons: [
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B1'
+                            },
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B2'
+                            }
+                        ]
                     },
                     {
-                        'title': 'Mexican Green Wave',
-                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg'
+                        title: 'Mexican Green Wave',
+                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg',
+                        subtitle: 'This is another unique recipe of American pizza which mane is influenced by the Mexican Waves.',
+                        buttons: [
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B1'
+                            },
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B2'
+                            }
+                        ]
                     },
                     {
-                        'title': 'Peppy Paneer',
-                        'imag_url': 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg'
+                        title: 'Peppy Paneer',
+                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg',
+                        subtitle: 'The Paneer used in this pizza are barbequed and then few pieces of Paneer is sprinkled over the pizza along with crispy capsicum slices and spicy red pepper.',
+                        buttons: [
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B1'
+                            },
+                            {
+                                type: 'web_url',
+                                url: '',
+                                title: 'B2'
+                            }
+                        ]
                     }
                 ]
             }
@@ -86,10 +138,9 @@ askSize = function (response, convo) {
     convo.say("What size do you want?");
     convo.ask({
         attachment: {
-            type: 'template',
+            type: 'image',
             payload: {
-                template_type: 'generic',
-                image_url: 'http://www.godfathers.com/sites/default/files/pie_sizes.gif'
+                url: 'http://www.godfathers.com/sites/default/files/pie_sizes.gif'
             }
         }
     } , function (response, convo) {
