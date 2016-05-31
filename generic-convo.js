@@ -173,11 +173,17 @@ askWhereDeliver = function (response, convo) {
                     payment_method: 'Cash On Delivery',
                     elements: [
                         {
-                            title: flavor + " Pizza",
-                            subtitle: 'Size : ' + size,
+                            title: "Pizza",
+                            subtitle: 'Size',
                             price: 100,
-                            image_url: getUrl(flavor).toString()
+                            image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
                         }
+                        // {
+                        //     title: flavor + " Pizza",
+                        //     subtitle: 'Size : ' + size,
+                        //     price: 100,
+                        //     image_url: getUrl(flavor).toString()
+                        // }
                     ]
                 }
             }
