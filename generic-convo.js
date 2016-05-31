@@ -160,26 +160,32 @@ askWhereDeliver = function (response, convo) {
         delivery = response.text;
         // convo.say("("+delivery+")");
         convo.say("Ok, your order has been placed..");
-        receipt(bot, message);
-        // convo.say({
-        //     attachment:{
-        //         type: 'template',
-        //         payload:{
-        //             template_type: 'receipt',
-        //             recipient_name: 'Harshil',
-        //             order_number: '123456789',
-        //             currency: 'INR',
-        //             payment_method: 'Cash On Delivery',
-        //             elements: [
-        //                 {
-        //                     title: flavor + " Pizza",
-        //                     subtitle: 'Size : ' + size,
-        //                     image_url: getUrl(flavor)
-        //                 }
-        //             ]
-        //         }
-        //     }
-        // });
+
+        // receipt(bot, message);
+
+        convo
+        convo.ask({
+            attachment:{
+                type: 'template',
+                payload:{
+                    template_type: 'receipt',
+                    recipient_name: 'Harshil',
+                    order_number: '123456789',
+                    currency: 'INR',
+                    payment_method: 'Cash On Delivery',
+                    elements: [
+                        {
+                            title: flavor + " Pizza",
+                            subtitle: 'Size : ' + size,
+                            price: 100,
+                            image_url: getUrl(flavor).toString()
+                        }
+                    ]
+                }
+            }
+        }, function (response, convo) {
+
+        });
         askAnother(response, convo);
         convo.next();
     });
@@ -281,26 +287,26 @@ getUrl = function (flavor) {
     }
 };
 
-receipt = function (bot, message) {
-    bot.reply({
-        attachment:{
-            type: 'template',
-            payload:{
-                template_type: 'receipt',
-                recipient_name: 'Harshil',
-                order_number: '123456789',
-                currency: 'INR',
-                payment_method: 'Cash On Delivery',
-                elements: [
-                    {
-                        title: flavor + " Pizza",
-                        quantity: 1,
-                        price: 50,
-                        subtitle: 'Size : ' + size,
-                        image_url: getUrl(flavor).toSource()
-                    }
-                ]
-            }
-        }
-    });
-};
+// receipt = function (bot, message) {
+//     bot.reply({
+//         attachment:{
+//             type: 'template',
+//             payload:{
+//                 template_type: 'receipt',
+//                 recipient_name: 'Harshil',
+//                 order_number: '123456789',
+//                 currency: 'INR',
+//                 payment_method: 'Cash On Delivery',
+//                 elements: [
+//                     {
+//                         title: flavor + " Pizza",
+//                         quantity: 1,
+//                         price: 50,
+//                         subtitle: 'Size : ' + size,
+//                         image_url: getUrl(flavor).toSource()
+//                     }
+//                 ]
+//             }
+//         }
+//     });
+// };
