@@ -20,6 +20,26 @@ var controller = Botkit.facebookbot({
 });
 
 var flavor, size, delivery;
+var doubleCheese = {
+    name: 'Double Cheese',
+    img_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg',
+    info: 'This is a very popular veg. pizza which has a double thick layer of cheese.'
+};
+var gourmet = {
+    name: 'Gourmet',
+    img_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg',
+    info: 'This is a unique flavour of vegetarian pizza where the pizza where the spicy vegetarian delight is topped with extremely appealing golden corns, loaded with extra cheese.',
+};
+var mexican = {
+    name: 'Mexican Green Wave',
+    img_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg',
+    info: 'This is another unique recipe of American pizza which mane is influenced by the Mexican Waves.',
+};
+var peppyPaneer = {
+    name: 'Peppy Paneer',
+    img_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg',
+    info: 'The Paneer used in this pizza are barbequed and then few pieces of Paneer is sprinkled over the pizza along with crispy capsicum slices and spicy red pepper.',
+};
 
 var bot = controller.spawn();
 
@@ -57,9 +77,9 @@ askFlavor = function (response, convo) {
                 template_type: 'generic',
                 elements: [
                     {
-                        title: 'Double Cheese',
-                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg',
-                        subtitle: 'This is a very popular veg. pizza which has a double thick layer of cheese.',
+                        title: doubleCheese.name,
+                        image_url: doubleCheese.img_url,
+                        subtitle: doubleCheese.info,
                         buttons: [
                             {
                                 type: 'postback',
@@ -69,9 +89,9 @@ askFlavor = function (response, convo) {
                         ]
                     },
                     {
-                        title: 'Gourmet',
-                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/2_pizza.jpg',
-                        subtitle: 'This is a unique flavour of vegetarian pizza where the pizza where the spicy vegetarian delight is topped with extremely appealing golden corns, loaded with extra cheese.',
+                        title: gourmet.name,
+                        image_url: gourmet.img_url,
+                        subtitle: gourmet.info,
                         buttons: [
                             {
                                 type: 'postback',
@@ -81,9 +101,9 @@ askFlavor = function (response, convo) {
                         ]
                     },
                     {
-                        title: 'Mexican Green Wave',
-                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/3_pizza.jpg',
-                        subtitle: 'This is another unique recipe of American pizza which mane is influenced by the Mexican Waves.',
+                        title: mexican.name,
+                        image_url: mexican.img_url,
+                        subtitle: mexican.info,
                         buttons: [
                             {
                                 type: 'postback',
@@ -93,9 +113,9 @@ askFlavor = function (response, convo) {
                         ]
                     },
                     {
-                        title: 'Peppy Paneer',
-                        image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/4_pizza.jpg',
-                        subtitle: 'The Paneer used in this pizza are barbequed and then few pieces of Paneer is sprinkled over the pizza along with crispy capsicum slices and spicy red pepper.',
+                        title: peppyPaneer.name,
+                        image_url: peppyPaneer.img_url,
+                        subtitle: peppyPaneer.info,
                         buttons: [
                             {
                                 type: 'postback',
@@ -109,7 +129,7 @@ askFlavor = function (response, convo) {
         }
     } , function (response, convo){
         convo.say("Awesome");
-        convo.say("("+flavor+")");
+        // convo.say("("+flavor+")");
         askSize(response, convo);
         convo.next();
     });
@@ -129,7 +149,7 @@ askSize = function (response, convo) {
     } , function (response, convo) {
         size = response.text;
         convo.say("Sure");
-        convo.say("("+size+")");
+        // convo.say("("+size+")");
         askWhereDeliver(response, convo);
         convo.next();
     });
@@ -138,8 +158,27 @@ askSize = function (response, convo) {
 askWhereDeliver = function (response, convo) {
     convo.ask("So where do you want it delivered?", function (response, convo) {
         delivery = response.text;
-        convo.say("("+delivery+")");
+        // convo.say("("+delivery+")");
         convo.say("Ok, your order has been placed..");
+        convo.say({
+            attachment:{
+                type: 'template',
+                payload:{
+                    template_type: 'receipt',
+                    recipient_name: 'Harshil',
+                    order_number: '123456789',
+                    currency: 'INR',
+                    payment_method: 'Cash On Delivery',
+                    elements: [
+                        {
+                            title: flavor.name + " Pizza",
+                            subtitle: 'Size : ' + size,
+                            image_url: flavor.img_url
+                        }
+                    ]
+                }
+            }
+        });
         askAnother(response, convo);
         convo.next();
     });
@@ -159,6 +198,7 @@ askAnother = function (response, convo) {
             pattern: bot.utterances.no,
             callback: function (response, convo) {
                 convo.say("Perhaps later...");
+                convo.say("Goodbye!");
                 convo.next();
             }
         },
@@ -171,27 +211,31 @@ askAnother = function (response, convo) {
             }
         }
     ]);
+
+    convo.on('end', function (convo) {
+        // convo.say();
+    })
 };
 
 controller.on('facebook_postback', function (bot, message) {
     switch (message.payload){
         case 'dC' :
             // convo.say("Double Cheese it is...");
-            flavor = "Double Cheese";
+            flavor = doubleCheese;
             bot.reply(message, "Double Cheese it is...");
             break;
         case 'g' :
             // convo.say("Gourmet it is...");
-            flavor = "Gourmet";
+            flavor = gourmet;
             bot.reply(message, "Gourmet it is...");
             break;
         case 'mG' :
             // convo.say("Mexican Green Wave it is...");
-            flavor = "Mexican Green Wave";
+            flavor = mexican;
             bot.reply(message, "Mexican Green Wave it is...");
             break;
         case 'pP' :
-            flavor = "Peppy Paneer";
+            flavor = peppyPaneer;
             // convo.say("Peppy Paneer it is...");
             bot.reply(message, "Peppy Paneer it is...");
             break;
