@@ -171,9 +171,9 @@ askWhereDeliver = function (response, convo) {
                     payment_method: 'Cash On Delivery',
                     elements: [
                         {
-                            title: flavor.name + " Pizza",
+                            title: flavor + " Pizza",
                             subtitle: 'Size : ' + size,
-                            image_url: flavor.img_url
+                            image_url: getUrl(flavor)
                         }
                     ]
                 }
@@ -221,23 +221,40 @@ controller.on('facebook_postback', function (bot, message) {
     switch (message.payload){
         case 'dC' :
             // convo.say("Double Cheese it is...");
-            flavor = doubleCheese;
+            flavor = "Double Cheese";
             bot.reply(message, "Double Cheese it is...");
             break;
         case 'g' :
             // convo.say("Gourmet it is...");
-            flavor = gourmet;
+            flavor = "Gourmet";
             bot.reply(message, "Gourmet it is...");
             break;
         case 'mG' :
             // convo.say("Mexican Green Wave it is...");
-            flavor = mexican;
+            flavor = "Mexican Green Wave";
             bot.reply(message, "Mexican Green Wave it is...");
             break;
         case 'pP' :
-            flavor = peppyPaneer;
+            flavor = "Peppy Paneer";
             // convo.say("Peppy Paneer it is...");
             bot.reply(message, "Peppy Paneer it is...");
             break;
     }
 });
+
+getUrl = function (flavor) {
+    switch (flavor) {
+        case doubleCheese.name :
+            return doubleCheese.img_url;
+            break;
+        case gourmet.name :
+            return gourmet.img_url;
+            break;
+        case mexican.name :
+            return mexican.img_url;
+            break;
+        case peppyPaneer.name :
+            return peppyPaneer.img_url;
+            break;
+    }
+};
