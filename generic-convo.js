@@ -159,11 +159,9 @@ askWhereDeliver = function (response, convo) {
     convo.ask("So where do you want it delivered?", function (response, convo) {
         delivery = response.text;
         // convo.say("("+delivery+")");
-        convo.say("Ok, your order has been placed..");
+        convo.say("Ok, do you want to confirm this order?");
 
         // receipt(bot, message);
-
-        convo
         convo.ask({
             attachment:{
                 type: 'template',
@@ -183,9 +181,39 @@ askWhereDeliver = function (response, convo) {
                     ]
                 }
             }
-        }, function (response, convo) {
-
-        });
+        }, [
+            {
+                pattern: bot.utterances.yes,
+                callback: function (response, convo) {
+                    convo.say("Hey!, your order has been successfully placed...");
+                    convo.next();
+                }
+            },
+            {
+                pattern: bot.utterances.no,
+                callback: function (response, convo) {
+                    convo.ask("Ok, do you want to order another pizza?", [
+                        {
+                            pattern: bot.utterances.yes,
+                            callback: function (response, convo) {
+                                convo.say("Let's start again...");
+                                askFlavor();
+                                convo.next();
+                            }
+                        },
+                        {
+                            pattern: bot.utterances.no,
+                            callback: function (response, convo) {
+                                convo.say("Okay, hope we'll talk again");
+                                convo.say("Goodbye!");
+                                convo.next();
+                            }
+                        }
+                    ]);
+                    convo.next();
+                }
+            }
+        ]);
         askAnother(response, convo);
         convo.next();
     });
