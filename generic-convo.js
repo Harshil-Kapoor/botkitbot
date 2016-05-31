@@ -151,7 +151,7 @@ askAnother = function (response, convo) {
             pattern: bot.utterances.yes,
             callback: function (response, convo) {
                 convo.say("Sure! Let's get you another one...");
-                convo.repeat();
+                askFlavor(response, convo);
                 convo.next();
             }
         },
@@ -159,6 +159,14 @@ askAnother = function (response, convo) {
             pattern: bot.utterances.no,
             callback: function (response, convo) {
                 convo.say("Perhaps later...");
+                convo.next();
+            }
+        },
+        {
+            default: true,
+            callback: function (response, convo) {
+                convo.say("Sorry, i didn't get you...");
+                convo.repeat();
                 convo.next();
             }
         }
