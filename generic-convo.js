@@ -140,9 +140,29 @@ askWhereDeliver = function (response, convo) {
         delivery = response.text;
         convo.say("("+delivery+")");
         convo.say("Ok, your order has been placed..");
-        convo.say("Goodbye!");
+        askAnother(response, convo);
         convo.next();
     });
+};
+
+askAnother = function (response, convo) {
+    convo.ask("Do you want another one?", [
+        {
+            pattern: bot.utterances.yes,
+            callback: function (response, convo) {
+                convo.say("Sure! Let's get you another one...");
+                convo.repeat();
+                convo.next();
+            }
+        },
+        {
+            pattern: bot.utterances.no,
+            callback: function (response, convo) {
+                convo.say("Perhaps later...");
+                convo.next();
+            }
+        }
+    ]);
 };
 
 controller.on('facebook_postback', function (bot, message) {
