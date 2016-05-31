@@ -19,6 +19,8 @@ var controller = Botkit.facebookbot({
     verify_token: verifyToken
 });
 
+var flavor, size, delivery;
+
 var bot = controller.spawn();
 
 controller.setupWebserver(port, function (err, webserver) {
@@ -105,8 +107,9 @@ askFlavor = function (response, convo) {
                 ]
             }
         }
-    } , function (response, convo) {
+    } , function (response, convo){
         convo.say("Awesome");
+        convo.say("("+flavor+")");
         askSize(response, convo);
         convo.next();
     });
@@ -124,7 +127,9 @@ askSize = function (response, convo) {
             }
         }
     } , function (response, convo) {
+        size = response.text;
         convo.say("Sure");
+        convo.say("("+size+")");
         askWhereDeliver(response, convo);
         convo.next();
     });
@@ -132,6 +137,8 @@ askSize = function (response, convo) {
 
 askWhereDeliver = function (response, convo) {
     convo.ask("So where do you want it delivered?", function (response, convo) {
+        delivery = response.text;
+        convo.say("("+delivery+")");
         convo.say("Ok, your order has been placed..");
         convo.say("Goodbye!");
         convo.next();
@@ -142,17 +149,21 @@ controller.on('facebook_postback', function (bot, message) {
     switch (message.payload){
         case 'dC' :
             // convo.say("Double Cheese it is...");
+            flavor = "Double Cheese";
             bot.reply(message, "Double Cheese it is...");
             break;
         case 'g' :
             // convo.say("Gourmet it is...");
+            flavor = "Gourmet";
             bot.reply(message, "Gourmet it is...");
             break;
         case 'mG' :
             // convo.say("Mexican Green Wave it is...");
+            flavor = "Mexican Green Wave";
             bot.reply(message, "Mexican Green Wave it is...");
             break;
         case 'pP' :
+            flavor = "Peppy Paneer";
             // convo.say("Peppy Paneer it is...");
             bot.reply(message, "Peppy Paneer it is...");
             break;
