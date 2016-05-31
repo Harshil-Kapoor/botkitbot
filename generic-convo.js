@@ -226,9 +226,10 @@ askAnother = function (response, convo) {
                     elements: [
                         {
                             title: flavor + " Pizza",
+                            quantity: 1,
                             price: 50,
                             subtitle: 'Size : ' + size,
-                            image_url: getUrl(flavor)
+                            image_url: getUrl(flavor).toSource()
                         }
                     ]
                 }
