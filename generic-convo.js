@@ -159,67 +159,69 @@ askWhereDeliver = function (response, convo) {
     convo.ask("So where do you want it delivered?", function (response, convo) {
         delivery = response.text;
         // convo.say("("+delivery+")");
-        convo.say("Ok, do you want to confirm this order?");
+        // convo.say("Ok, do you want to confirm this order?");
+        convo.say("Ok!, your order has been placed");
+        convo.say("Goodbye!");
 
         // receipt(bot, message);
-        convo.ask({
-            attachment:{
-                type: 'template',
-                payload:{
-                    template_type: 'receipt',
-                    recipient_name: 'Harshil',
-                    order_number: '123456789',
-                    currency: 'INR',
-                    payment_method: 'Cash On Delivery',
-                    elements: [
-                        {
-                            title: "Pizza",
-                            subtitle: 'Size',
-                            price: 100,
-                            image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
-                        }
-                        // {
-                        //     title: flavor + " Pizza",
-                        //     subtitle: 'Size : ' + size,
-                        //     price: 100,
-                        //     image_url: getUrl(flavor).toString()
-                        // }
-                    ]
-                }
-            }
-        }, [
-            {
-                pattern: bot.utterances.yes,
-                callback: function (response, convo) {
-                    convo.say("Hey!, your order has been successfully placed...");
-                    convo.next();
-                }
-            },
-            {
-                pattern: bot.utterances.no,
-                callback: function (response, convo) {
-                    convo.ask("Ok, do you want to order another pizza?", [
-                        {
-                            pattern: bot.utterances.yes,
-                            callback: function (response, convo) {
-                                convo.say("Let's start again...");
-                                askFlavor();
-                                convo.next();
-                            }
-                        },
-                        {
-                            pattern: bot.utterances.no,
-                            callback: function (response, convo) {
-                                convo.say("Okay, hope we'll talk again");
-                                convo.say("Goodbye!");
-                                convo.next();
-                            }
-                        }
-                    ]);
-                    convo.next();
-                }
-            }
-        ]);
+    //     convo.ask({
+    //         attachment:{
+    //             type: 'template',
+    //             payload:{
+    //                 template_type: 'receipt',
+    //                 recipient_name: 'Harshil',
+    //                 order_number: '123456789',
+    //                 currency: 'INR',
+    //                 payment_method: 'Cash On Delivery',
+    //                 elements: [
+    //                     {
+    //                         title: "Pizza",
+    //                         subtitle: 'Size',
+    //                         price: 100,
+    //                         image_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg'
+    //                     }
+    //                     // {
+    //                     //     title: flavor + " Pizza",
+    //                     //     subtitle: 'Size : ' + size,
+    //                     //     price: 100,
+    //                     //     image_url: getUrl(flavor).toString()
+    //                     // }
+    //                 ]
+    //             }
+    //         }
+    //     }, [
+    //         {
+    //             pattern: bot.utterances.yes,
+    //             callback: function (response, convo) {
+    //                 convo.say("Hey!, your order has been successfully placed...");
+    //                 convo.next();
+    //             }
+    //         },
+    //         {
+    //             pattern: bot.utterances.no,
+    //             callback: function (response, convo) {
+    //                 convo.ask("Ok, do you want to order another pizza?", [
+    //                     {
+    //                         pattern: bot.utterances.yes,
+    //                         callback: function (response, convo) {
+    //                             convo.say("Let's start again...");
+    //                             askFlavor();
+    //                             convo.next();
+    //                         }
+    //                     },
+    //                     {
+    //                         pattern: bot.utterances.no,
+    //                         callback: function (response, convo) {
+    //                             convo.say("Okay, hope we'll talk again");
+    //                             convo.say("Goodbye!");
+    //                             convo.next();
+    //                         }
+    //                     }
+    //                 ]);
+    //                 convo.next();
+    //             }
+    //         }
+    //     ]);
         askAnother(response, convo);
         convo.next();
     });
