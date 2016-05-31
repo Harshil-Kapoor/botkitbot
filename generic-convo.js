@@ -214,6 +214,26 @@ askAnother = function (response, convo) {
 
     convo.on('end', function (convo) {
         // convo.say();
+        convo.say({
+            attachment:{
+                type: 'template',
+                payload:{
+                    template_type: 'receipt',
+                    recipient_name: 'Harshil',
+                    order_number: '123456789',
+                    currency: 'INR',
+                    payment_method: 'Cash On Delivery',
+                    elements: [
+                        {
+                            title: flavor + " Pizza",
+                            price: 50,
+                            subtitle: 'Size : ' + size,
+                            image_url: getUrl(flavor)
+                        }
+                    ]
+                }
+            }
+        });
     })
 };
 
