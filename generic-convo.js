@@ -242,6 +242,8 @@ askAnother = function (response, convo) {
             callback: function (response, convo) {
                 convo.say("Perhaps later...");
                 convo.say("Goodbye!");
+                var value = convo.extractResponses();
+                console.log(value.toString());
                 convo.next();
             }
         },
@@ -254,6 +256,11 @@ askAnother = function (response, convo) {
             }
         }
     ]);
+
+    convo.on('end', function (convo) {
+        var value = convo.extractResponses();
+        console.log(value.toString());
+    });
 
     // convo.on('end', function (convo) {
     //     // convo.say();
