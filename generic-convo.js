@@ -41,6 +41,22 @@ var peppyPaneer = {
     info: 'The Paneer used in this pizza are barbequed and then few pieces of Paneer is sprinkled over the pizza along with crispy capsicum slices and spicy red pepper.',
 };
 
+
+var flavorResponse={
+    key: 'flavorResp',
+    multiple: false
+};
+
+var sizeResponse={
+    key: 'sizeResp',
+    multiple: false
+};
+
+var deliveryResponse={
+    key: 'deliveryResp',
+    multiple: false
+};
+
 var bot = controller.spawn();
 
 controller.setupWebserver(port, function (err, webserver) {
@@ -61,6 +77,17 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
         convo.say("Welcome to pizzatime");
         convo.say("Let's get you a pizza");
         askFlavor(response, convo);
+        convo.next();
+    })
+});
+
+controller.hears(['previous order', 'history'], 'message_received', function (bot, message) {
+    bot.startConversation(message, function (response, convo) {
+        convo.say("Sure, here's your previous order :");
+        convo.say('Flavor : ' + convo.extractResponse('flavorResp'));
+        convo.say('Size : ' + convo.extractResponse('sizeResp'));
+        convo.say('Size : ' + convo.extractResponse('deliveryResp'));
+        askAnother(response, convo);
         convo.next();
     })
 });
@@ -134,11 +161,6 @@ askFlavor = function (response, convo) {
         convo.next();
     }, flavorResponse);
 };
-
-var flavorResponse={
-    key: 'flavorResp',
-    multiple: false
-}
 // text: "What size do you want?",
 
 askSize = function (response, convo) {
@@ -156,7 +178,7 @@ askSize = function (response, convo) {
         // convo.say("("+size+")");
         askWhereDeliver(response, convo);
         convo.next();
-    });
+    }, sizeResponse);
 };
 
 askWhereDeliver = function (response, convo) {
@@ -165,7 +187,12 @@ askWhereDeliver = function (response, convo) {
         // convo.say("("+delivery+")");
         // convo.say("Ok, do you want to confirm this order?");
         convo.say("Ok!, your order has been placed");
-        convo.say("Goodbye!");
+        // convo.say("Goodbye!");
+
+        convo.say("Ok!, your order has been placed");
+        convo.say("Here's your order :");
+        convo.say(convo.extractResponses('flavorResp'));
+
 
         // receipt(bot, message);
     //     convo.ask({
@@ -228,7 +255,7 @@ askWhereDeliver = function (response, convo) {
     //     ]);
         askAnother(response, convo);
         convo.next();
-    });
+    }, deliveryResponse);
 };
 
 askAnother = function (response, convo) {
@@ -246,9 +273,9 @@ askAnother = function (response, convo) {
             callback: function (response, convo) {
                 convo.say("Perhaps later...");
                 convo.say("Goodbye!");
-                var value = convo.extractResponses();
+                // var value = convo.extractResponses();
                 // console.log(value.toString());
-                convo.say(value.toString());
+                // convo.say(value.toString());
                 convo.say(convo.extractResponse('flavorResp'));
                 convo.next();
             }
