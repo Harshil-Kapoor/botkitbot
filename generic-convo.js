@@ -136,7 +136,7 @@ askFlavor = function (response, convo) {
 };
 
 var flavorResponse={
-    key: flavorResp,
+    key: 'flavorResp',
     multiple: false
 }
 // text: "What size do you want?",
