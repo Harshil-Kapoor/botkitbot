@@ -73,7 +73,7 @@ controller.on('facebook_optin', function (bot, message) {
     bot.reply(message, "Welcome to Pizzatime...");
 });
 
-controller.hears(['pizzatime', 'hi', 'hello', 'previous order', 'history'], 'message_received', function (bot, message) {
+controller.hears(['pizzatime', 'hi', 'hello', 'previous order', 'history'], ['message_received'], function (bot, message) {
     var request = message.match[0];
     if(request === 'pizzatime' || request === 'hi' || request === 'hello') {
         bot.startConversation(message, function (response, convo) {
