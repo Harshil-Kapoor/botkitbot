@@ -20,6 +20,8 @@ var controller = Botkit.facebookbot({
 });
 
 var flavor, size, delivery;
+var flavorO, sizeO, deliveryO;
+
 var doubleCheese = {
     name: 'Double Cheese',
     img_url: 'http://top-10-list.org/wp-content/uploads/2011/05/1_pizza.jpg',
@@ -82,14 +84,11 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
 });
 
 controller.hears(['previous order', 'history'], 'message_received', function (bot, message) {
-    bot.startConversation(message, function (response, convo) {
-        convo.say("Sure, here's your previous order :");
+    bot.reply("Sure, here's your previous order :");
 
-        orderDetails(response, convo);
-
-        askAnother(response, convo);
-        convo.next();
-    })
+    bot.reply("Flavor : " + flavorO);
+    bot.reply("Size : " + sizeO);
+    bot.reply("Dellivery location : " + deliveryO);
 });
 
 // convo.ask("What flavor do you want" , function (response, convo) {
@@ -190,7 +189,7 @@ askWhereDeliver = function (response, convo) {
         // convo.say("Goodbye!");
 
         convo.say("Ok!, your order has been placed");
-        convo.say("Here's your order :");
+        // convo.say("Here's your order :");
         // convo.say(convo.extractResponses('flavorResp'));
 
 
@@ -329,9 +328,13 @@ askAnother = function (response, convo) {
 orderDetails = function (response, convo) {
     convo.say("Here's your order details : ");
 
-    convo.say(convo.extractResponse('flavorResp'));
-    convo.say(convo.extractResponse('sizeResp'));
-    convo.say(convo.extractResponse('deliveryResp'));
+    if(!flavorO)    flavorO = convo.extractResponse('flavorResp');
+    if(!sizeO)      sizeO = convo.extractResponse('sizeResp');
+    if(!deliveryO)  deliveryO= convo.extractResponse('deliveryResp');
+
+    convo.say(flavorO);
+    convo.say(sizeO);
+    convo.say(deliveryO);
 
 };
 
