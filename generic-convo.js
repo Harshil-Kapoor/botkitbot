@@ -73,22 +73,23 @@ controller.on('facebook_optin', function (bot, message) {
     bot.reply(message, "Welcome to Pizzatime...");
 });
 
-controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot, message) {
-    bot.startConversation(message, function (response, convo) {
-        convo.say("Hey there!");
-        convo.say("Welcome to pizzatime");
-        convo.say("Let's get you a pizza");
-        askFlavor(response, convo);
-        convo.next();
-    })
-});
+controller.hears(['pizzatime', 'hi', 'hello', 'previous order', 'history'], 'message_received', function (bot, message) {
+    var request = message.match[0];
+    if(request === 'pizzatime' || request === 'hi' || request === 'hello') {
+        bot.startConversation(message, function (response, convo) {
+            convo.say("Hey there!");
+            convo.say("Welcome to pizzatime");
+            convo.say("Let's get you a pizza");
+            askFlavor(response, convo);
+            convo.next();
+        })
+    }else if(request === 'previous order' || request === 'history') {
+        bot.reply("Sure, here's your previous order :");
 
-controller.hears(['previous order', 'history'], 'message_received', function (bot, message) {
-    bot.reply("Sure, here's your previous order :");
-
-    bot.reply("Flavor : " + flavorO);
-    bot.reply("Size : " + sizeO);
-    bot.reply("Dellivery location : " + deliveryO);
+        bot.reply("Flavor : " + flavorO);
+        bot.reply("Size : " + sizeO);
+        bot.reply("Dellivery location : " + deliveryO);
+    }
 });
 
 // convo.ask("What flavor do you want" , function (response, convo) {
