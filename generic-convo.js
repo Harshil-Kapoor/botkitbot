@@ -75,6 +75,7 @@ controller.on('facebook_optin', function (bot, message) {
 
 controller.hears(['pizzatime', 'hi', 'hello', 'previous order', 'history'], ['message_received'], function (bot, message) {
     var request = message.match[0];
+    console.log("Request captured, request : "+request);
     if(request === 'pizzatime' || request === 'hi' || request === 'hello') {
         bot.startConversation(message, function (response, convo) {
             convo.say("Hey there!");
