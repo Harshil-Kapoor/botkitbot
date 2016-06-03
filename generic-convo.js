@@ -132,9 +132,13 @@ askFlavor = function (response, convo) {
         // convo.say("("+flavor+")");
         askSize(response, convo);
         convo.next();
-    });
+    }, flavorResponse);
 };
 
+var flavorResponse={
+    key: flavorResp,
+    multiple: false
+}
 // text: "What size do you want?",
 
 askSize = function (response, convo) {
@@ -245,6 +249,7 @@ askAnother = function (response, convo) {
                 var value = convo.extractResponses();
                 // console.log(value.toString());
                 convo.say(value.toString());
+                convo.say(convo.extractResponse('flavorResp'));
                 convo.next();
             }
         },
