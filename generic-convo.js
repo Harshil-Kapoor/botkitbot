@@ -84,9 +84,9 @@ controller.hears(['pizzatime', 'hi', 'hello'], 'message_received', function (bot
 controller.hears(['previous order', 'history'], 'message_received', function (bot, message) {
     bot.startConversation(message, function (response, convo) {
         convo.say("Sure, here's your previous order :");
-        convo.say('Flavor : ' + convo.extractResponse('flavorResp'));
-        convo.say('Size : ' + convo.extractResponse('sizeResp'));
-        convo.say('Size : ' + convo.extractResponse('deliveryResp'));
+
+        orderDetails(response, convo);
+
         askAnother(response, convo);
         convo.next();
     })
@@ -191,7 +191,7 @@ askWhereDeliver = function (response, convo) {
 
         convo.say("Ok!, your order has been placed");
         convo.say("Here's your order :");
-        convo.say(convo.extractResponses('flavorResp'));
+        // convo.say(convo.extractResponses('flavorResp'));
 
 
         // receipt(bot, message);
@@ -272,11 +272,16 @@ askAnother = function (response, convo) {
             pattern: bot.utterances.no,
             callback: function (response, convo) {
                 convo.say("Perhaps later...");
-                convo.say("Goodbye!");
+                // convo.say("Goodbye!");
                 // var value = convo.extractResponses();
                 // console.log(value.toString());
                 // convo.say(value.toString());
-                convo.say(convo.extractResponse('flavorResp'));
+
+                // convo.say(convo.extractResponse('flavorResp'));
+                // convo.say(convo.extractResponse('flavorResp'));
+                // convo.say(convo.extractResponse('flavorResp'));
+
+                orderDetails(response, convo);
                 convo.next();
             }
         },
@@ -291,8 +296,8 @@ askAnother = function (response, convo) {
     ]);
 
     convo.on('end', function (convo) {
-        var value = convo.extractResponses();
-        console.log(value.toString());
+        var values = convo.extractResponses();
+        console.log(values.flavorResponse);
     });
 
     // convo.on('end', function (convo) {
@@ -319,6 +324,15 @@ askAnother = function (response, convo) {
     //         }
     //     });
     // })
+};
+
+orderDetails = function (response, convo) {
+    convo.say("Here's your order details : ");
+
+    convo.say(convo.extractResponse('flavorResp'));
+    convo.say(convo.extractResponse('sizeResp'));
+    convo.say(convo.extractResponse('deliveryResp'));
+
 };
 
 controller.on('facebook_postback', function (bot, message) {
