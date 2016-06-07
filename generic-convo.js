@@ -79,11 +79,11 @@ controller.hears(['pizzatime', 'hi', 'hello', 'previous order', 'history'], ['me
     if(request === 'pizzatime' || request === 'hi' || request === 'hello') {
         bot.startConversation(message, function (response, convo) {
 
-            bot.reply("Sure, here's your previous order :");
+            convo.say("Sure, here's your previous order :");
 
-            bot.reply("Flavor : " + flavorO);
-            bot.reply("Size : " + sizeO);
-            bot.reply("Dellivery location : " + deliveryO);
+            convo.say("Flavor : " + flavorO);
+            convo.say("Size : " + sizeO);
+            convo.say("Dellivery location : " + deliveryO);
 
             convo.say("Hey there!");
             convo.say("Welcome to pizzatime");
