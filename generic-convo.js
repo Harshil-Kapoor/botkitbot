@@ -73,34 +73,7 @@ controller.on('facebook_optin', function (bot, message) {
     bot.reply(message, "Welcome to Pizzatime...");
 });
 
-// controller.hears(['pizzatime', 'hi', 'hello', 'previous order', 'history'], ['message_received'], function (bot, message) {
-//     var request = message.match[0];
-//     console.log("Request captured, request : "+request);
-//     if(request === 'pizzatime' || request === 'hi' || request === 'hello') {
-//         bot.startConversation(message, function (response, convo) {
-//
-//             convo.say("Sure, here's your previous order :");
-//
-//             convo.say("Flavor : " + flavorO);
-//             convo.say("Size : " + sizeO);
-//             convo.say("Dellivery location : " + deliveryO);
-//
-//             convo.say("Hey there!");
-//             convo.say("Welcome to pizzatime");
-//             convo.say("Let's get you a pizza");
-//             askFlavor(response, convo);
-//             convo.next();
-//         })
-//     }else if(request === 'previous order' || request === 'history') {
-//         bot.reply("Sure, here's your previous order :");
-//
-//         bot.reply("Flavor : " + flavorO);
-//         bot.reply("Size : " + sizeO);
-//         bot.reply("Dellivery location : " + deliveryO);
-//     }
-// });
-
-controller.hears(['pizzatime', 'hi', 'hello', 'history'], ['message_received'], function (bot, message) {
+controller.hears(['pizzatime', 'hi', 'hello', 'previous order', 'history'], ['message_received'], function (bot, message) {
     var request = message.match[0];
     console.log("Request captured, request : "+request);
     if(request === 'pizzatime' || request === 'hi' || request === 'hello') {
@@ -127,13 +100,40 @@ controller.hears(['pizzatime', 'hi', 'hello', 'history'], ['message_received'], 
     }
 });
 
-controller.hears(['previous order'], ['message_received'], function (bot, message) {
-        bot.reply("Sure, here's your previous order :");
+// controller.hears(['pizzatime', 'hi', 'hello', 'history'], ['message_received'], function (bot, message) {
+//     var request = message.match[0];
+//     console.log("Request captured, request : "+request);
+//     if(request === 'pizzatime' || request === 'hi' || request === 'hello') {
+//         bot.startConversation(message, function (response, convo) {
+//
+//             convo.say("Sure, here's your previous order :");
+//
+//             convo.say("Flavor : " + flavorO);
+//             convo.say("Size : " + sizeO);
+//             convo.say("Dellivery location : " + deliveryO);
+//
+//             convo.say("Hey there!");
+//             convo.say("Welcome to pizzatime");
+//             convo.say("Let's get you a pizza");
+//             askFlavor(response, convo);
+//             convo.next();
+//         })
+//     }else if(request === 'previous order' || request === 'history') {
+//         bot.reply("Sure, here's your previous order :");
+//
+//         bot.reply("Flavor : " + flavorO);
+//         bot.reply("Size : " + sizeO);
+//         bot.reply("Dellivery location : " + deliveryO);
+//     }
+// });
 
-        bot.reply("Flavor : " + flavorO);
-        bot.reply("Size : " + sizeO);
-        bot.reply("Dellivery location : " + deliveryO);
-});
+// controller.hears(['previous order'], ['message_received'], function (bot, message) {
+//         bot.reply("Sure, here's your previous order :");
+//
+//         bot.reply("Flavor : " + flavorO);
+//         bot.reply("Size : " + sizeO);
+//         bot.reply("Dellivery location : " + deliveryO);
+// });
 
 // convo.ask("What flavor do you want" , function (response, convo) {
 // text: 'What flavor of pizza do you want?',
